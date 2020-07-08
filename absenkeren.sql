@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 08, 2020 at 05:24 AM
+-- Generation Time: Jul 08, 2020 at 05:39 AM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.11
 
@@ -66,7 +66,19 @@ INSERT INTO `t_absen` (`id_absen`, `nis`, `bulan`, `m1`, `m2`, `m3`, `m4`) VALUE
 (21, '17111361', '9', NULL, NULL, NULL, NULL),
 (22, '17111361', '10', NULL, NULL, NULL, NULL),
 (23, '17111361', '11', 'h', 'a', 'h', 'a'),
-(24, '17111361', '12', NULL, NULL, NULL, NULL);
+(24, '17111361', '12', NULL, NULL, NULL, NULL),
+(25, '17111362', '1', NULL, NULL, NULL, NULL),
+(26, '17111362', '2', NULL, NULL, NULL, NULL),
+(27, '17111362', '3', NULL, NULL, NULL, NULL),
+(28, '17111362', '4', NULL, NULL, NULL, NULL),
+(29, '17111362', '5', NULL, NULL, NULL, NULL),
+(30, '17111362', '6', NULL, NULL, NULL, NULL),
+(31, '17111362', '7', NULL, NULL, NULL, NULL),
+(32, '17111362', '8', NULL, NULL, NULL, NULL),
+(33, '17111362', '9', NULL, NULL, NULL, NULL),
+(34, '17111362', '10', NULL, NULL, NULL, NULL),
+(35, '17111362', '11', NULL, NULL, NULL, NULL),
+(36, '17111362', '12', NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -92,6 +104,25 @@ INSERT INTO `t_kelas` (`id_kelas`, `kelas`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `t_login`
+--
+
+CREATE TABLE `t_login` (
+  `id` int(2) NOT NULL,
+  `username` varchar(16) NOT NULL,
+  `password` varchar(16) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `t_login`
+--
+
+INSERT INTO `t_login` (`id`, `username`, `password`) VALUES
+(1, 'admin', 'admin');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `t_murid`
 --
 
@@ -107,7 +138,8 @@ CREATE TABLE `t_murid` (
 --
 
 INSERT INTO `t_murid` (`nis`, `no_absen`, `nm_siswa`, `kelas`) VALUES
-('17111361', NULL, 'Jajang', 'XII RPL');
+('17111361', NULL, 'Jajang', 'XII RPL'),
+('17111362', NULL, 'Harunamanyo', 'XII RPL');
 
 --
 -- Indexes for dumped tables
@@ -126,6 +158,12 @@ ALTER TABLE `t_kelas`
   ADD PRIMARY KEY (`id_kelas`);
 
 --
+-- Indexes for table `t_login`
+--
+ALTER TABLE `t_login`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `t_murid`
 --
 ALTER TABLE `t_murid`
@@ -139,7 +177,13 @@ ALTER TABLE `t_murid`
 -- AUTO_INCREMENT for table `t_absen`
 --
 ALTER TABLE `t_absen`
-  MODIFY `id_absen` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id_absen` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+
+--
+-- AUTO_INCREMENT for table `t_login`
+--
+ALTER TABLE `t_login`
+  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
