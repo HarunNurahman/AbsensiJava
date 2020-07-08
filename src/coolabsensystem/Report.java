@@ -120,7 +120,7 @@ public class Report extends javax.swing.JDialog {
             }
         });
 
-        lblJudul.setFont(new java.awt.Font("Tekton Pro", 0, 36)); // NOI18N
+        lblJudul.setFont(new java.awt.Font("Tekton Pro", 0, 24)); // NOI18N
         lblJudul.setText("Form Manage Kelas");
 
         javax.swing.GroupLayout titlePanelLayout = new javax.swing.GroupLayout(titlePanel);

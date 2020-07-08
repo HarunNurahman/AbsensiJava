@@ -29,7 +29,7 @@ public class FormDataSiswaKeren extends javax.swing.JFrame {
     int selected, baris = -1;
     Connection koneksi;
     DefaultTableModel dtm;
-    
+
     public FormDataSiswaKeren() {
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
@@ -42,26 +42,26 @@ public class FormDataSiswaKeren extends javax.swing.JFrame {
         } catch (UnsupportedLookAndFeelException ex) {
             Logger.getLogger(FormDataSiswaKeren.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         initComponents();
         koneksi = CoolAbsenSystem.getKoneksi("localhost", "3306", "root", "", "absenkeren");
-       
-        headPanel.setBackground(new Color(229,13,58));
+
+        headPanel.setBackground(new Color(229, 13, 58));
         bodyPanel.setBackground(new Color(255, 255, 255));
         naviPanel.setBackground(new Color(189, 188, 188));
-        
+
         showDataRPL();
         showDataTKJ();
         showDataMM();
-        
+
     }
-    
+
     public void showDataRPL() {
-        String kolom[] = {"No","NIS","Nama Siswa", "Kelas"};
+        String kolom[] = {"No", "NIS", "Nama Siswa", "Kelas"};
         dtm = new DefaultTableModel(null, kolom);
         try {
             Statement stmt = koneksi.createStatement();
-            String query = "SELECT * FROM t_murid WHERE kelas='XII RPL1'";
+            String query = "SELECT * FROM t_murid WHERE kelas='XII RPL'";
             ResultSet rs = stmt.executeQuery(query);
             int no = 1;
             while (rs.next()) {
@@ -69,7 +69,7 @@ public class FormDataSiswaKeren extends javax.swing.JFrame {
                 String nama = rs.getString("nm_siswa");
                 String kelas = rs.getString("kelas");
 
-                dtm.addRow(new String[]{no+"",nis, nama, kelas});
+                dtm.addRow(new String[]{no + "", nis, nama, kelas});
                 no++;
             }
         } catch (SQLException ex) {
@@ -77,9 +77,9 @@ public class FormDataSiswaKeren extends javax.swing.JFrame {
         }
         tbl_RPL.setModel(dtm);
     }
-    
+
     public void showDataTKJ() {
-        String kolom[] = {"No","NIS","Nama Siswa", "Kelas"};
+        String kolom[] = {"No", "NIS", "Nama Siswa", "Kelas"};
         dtm = new DefaultTableModel(null, kolom);
         try {
             Statement stmt = koneksi.createStatement();
@@ -91,7 +91,7 @@ public class FormDataSiswaKeren extends javax.swing.JFrame {
                 String nama = rs.getString("nm_siswa");
                 String kelas = rs.getString("kelas");
 
-                dtm.addRow(new String[]{no+"",nis, nama, kelas});
+                dtm.addRow(new String[]{no + "", nis, nama, kelas});
                 no++;
             }
         } catch (SQLException ex) {
@@ -99,9 +99,9 @@ public class FormDataSiswaKeren extends javax.swing.JFrame {
         }
         tbl_TKJ.setModel(dtm);
     }
-    
+
     public void showDataMM() {
-        String kolom[] = {"No","NIS","Nama Siswa", "Kelas"};
+        String kolom[] = {"No", "NIS", "Nama Siswa", "Kelas"};
         dtm = new DefaultTableModel(null, kolom);
         try {
             Statement stmt = koneksi.createStatement();
@@ -113,7 +113,7 @@ public class FormDataSiswaKeren extends javax.swing.JFrame {
                 String nama = rs.getString("nm_siswa");
                 String kelas = rs.getString("kelas");
 
-                dtm.addRow(new String[]{no+"",nis, nama, kelas});
+                dtm.addRow(new String[]{no + "", nis, nama, kelas});
                 no++;
             }
         } catch (SQLException ex) {
@@ -121,57 +121,53 @@ public class FormDataSiswaKeren extends javax.swing.JFrame {
         }
         tbl_MM.setModel(dtm);
     }
-    
-    public void addMurid(){
-        ManageMurid Tambah = new ManageMurid(this, true, "add","", "");
+
+    public void addMurid() {
+        ManageMurid Tambah = new ManageMurid(this, true, "add", "", "");
         Tambah.setVisible(true);
     }
-    
-    public void editMurid(){
-        String nis=null, kelas=null;
-        
-       if (selected == 0){
-           nis = tbl_RPL.getValueAt (baris, 1).toString();
-           kelas = tbl_RPL.getValueAt (baris, 3).toString();
-       }
-       else if (selected == 1){
-           nis = tbl_TKJ.getValueAt (baris, 1).toString();
-           kelas = tbl_TKJ.getValueAt (baris, 3).toString();
-       }
-       else if (selected == 2){
-           nis = tbl_MM.getValueAt (baris, 1).toString();
-           kelas = tbl_MM.getValueAt (baris, 3).toString();
-       }
-        
-        if(baris == -1){
+
+    public void editMurid() {
+        String nis = null, kelas = null;
+
+        if (selected == 0) {
+            nis = tbl_RPL.getValueAt(baris, 1).toString();
+            kelas = tbl_RPL.getValueAt(baris, 3).toString();
+        } else if (selected == 1) {
+            nis = tbl_TKJ.getValueAt(baris, 1).toString();
+            kelas = tbl_TKJ.getValueAt(baris, 3).toString();
+        } else if (selected == 2) {
+            nis = tbl_MM.getValueAt(baris, 1).toString();
+            kelas = tbl_MM.getValueAt(baris, 3).toString();
+        }
+
+        if (baris == -1) {
             JOptionPane.showMessageDialog(null, "Data belum dipilih!");
         } else {
             System.out.println(kelas);
-            new ManageMurid(this, true, "edit",nis, kelas).setVisible(true);
+            new ManageMurid(this, true, "edit", nis, kelas).setVisible(true);
         }
     }
-    
-    public void deleteMurid(){
-       String nis=null;
-       if (selected == 0){
-            nis = tbl_RPL.getValueAt (baris, 1).toString();
+
+    public void deleteMurid() {
+        String nis = null;
+        if (selected == 0) {
+            nis = tbl_RPL.getValueAt(baris, 1).toString();
+        } else if (selected == 1) {
+            nis = tbl_TKJ.getValueAt(baris, 1).toString();
+        } else if (selected == 2) {
+            nis = tbl_MM.getValueAt(baris, 1).toString();
         }
-        else if (selected == 1){
-            nis = tbl_TKJ.getValueAt (baris, 1).toString();
-        }
-        else if (selected == 2){
-            nis = tbl_MM.getValueAt (baris, 1).toString();
-        }
-        
-        if(baris == -1){
+
+        if (baris == -1) {
             JOptionPane.showMessageDialog(null, "Data belum dipilih!");
         } else {
-           try{
+            try {
                 Statement stmt = koneksi.createStatement();
-                String delete = "DELETE FROM t_murid WHERE nis='"+nis+"';";
+                String delete = "DELETE FROM t_murid WHERE nis='" + nis + "';";
                 int berhasil = stmt.executeUpdate(delete);
-                if(berhasil == 1){
-                    String delet = "DELETE FROM t_absen WHERE nis='"+nis+"';";
+                if (berhasil == 1) {
+                    String delet = "DELETE FROM t_absen WHERE nis='" + nis + "';";
                     stmt.executeUpdate(delet);
                     JOptionPane.showMessageDialog(null, "Data Berhasil dihapus!");
                     dtm.getDataVector().removeAllElements();
@@ -184,14 +180,14 @@ public class FormDataSiswaKeren extends javax.swing.JFrame {
             }
         }
     }
-    
-    public void createKelas(String nm_kelas){
+
+    public void createKelas(String nm_kelas) {
         System.out.println(nm_kelas);
         javax.swing.JPanel panelKelas = new javax.swing.JPanel();
         //panelKelas.add();
         DataMurid.addTab(nm_kelas, tabRPL);
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -224,7 +220,6 @@ public class FormDataSiswaKeren extends javax.swing.JFrame {
         btnLaporan = new javax.swing.JButton();
         btnPDF = new javax.swing.JButton();
         btnPrint = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -391,7 +386,7 @@ public class FormDataSiswaKeren extends javax.swing.JFrame {
             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
         );
 
-        DataMurid.addTab("XII-MM", tabMM);
+        DataMurid.addTab("XII-AV", tabMM);
 
         jLabel7.setFont(new java.awt.Font("Century Gothic", 3, 14)); // NOI18N
         jLabel7.setText("Report");
@@ -452,9 +447,6 @@ public class FormDataSiswaKeren extends javax.swing.JFrame {
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 2, 14)); // NOI18N
-        jLabel6.setText("Mata Pelajaran Pemrograman Berbasis Objek");
-
         javax.swing.GroupLayout headPanelLayout = new javax.swing.GroupLayout(headPanel);
         headPanel.setLayout(headPanelLayout);
         headPanelLayout.setHorizontalGroup(
@@ -466,10 +458,7 @@ public class FormDataSiswaKeren extends javax.swing.JFrame {
                     .addGroup(headPanelLayout.createSequentialGroup()
                         .addGap(110, 110, 110)
                         .addComponent(jLabel1))
-                    .addComponent(jLabel2)
-                    .addGroup(headPanelLayout.createSequentialGroup()
-                        .addGap(88, 88, 88)
-                        .addComponent(jLabel6)))
+                    .addComponent(jLabel2))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         headPanelLayout.setVerticalGroup(
@@ -479,9 +468,7 @@ public class FormDataSiswaKeren extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel6)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addComponent(bodyPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
         );
@@ -506,7 +493,7 @@ public class FormDataSiswaKeren extends javax.swing.JFrame {
                                 .addComponent(btnRefresh, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btnDelete, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btnManageKelas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnAbsen, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(btnAbsen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addComponent(jLabel4)
                             .addGroup(naviPanelLayout.createSequentialGroup()
                                 .addGap(11, 11, 11)
@@ -578,7 +565,7 @@ public class FormDataSiswaKeren extends javax.swing.JFrame {
     }//GEN-LAST:event_DataMuridStateChanged
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
-        if (baris == -1){
+        if (baris == -1) {
             JOptionPane.showMessageDialog(null, "Data Belum Dipilih!");
         } else {
             editMurid();
@@ -589,7 +576,7 @@ public class FormDataSiswaKeren extends javax.swing.JFrame {
         JFrame frame = new JFrame();
         String message = "Apakah anda benar - benar ingin menghapus data ini???";
 
-        if (baris == -1){
+        if (baris == -1) {
             JOptionPane.showMessageDialog(null, "Data Belum Dipilih!");
         } else {
             int answer = JOptionPane.showConfirmDialog(frame, message);
@@ -608,7 +595,7 @@ public class FormDataSiswaKeren extends javax.swing.JFrame {
         showDataRPL();
         showDataTKJ();
         showDataMM();
-        baris=-1;
+        baris = -1;
     }//GEN-LAST:event_btnRefreshActionPerformed
 
     private void btnAbsenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbsenActionPerformed
@@ -619,58 +606,59 @@ public class FormDataSiswaKeren extends javax.swing.JFrame {
         new ManageKelas(this, true).setVisible(true);
     }//GEN-LAST:event_btnManageKelasActionPerformed
 
-     public void callReport(String act, String path){
+    public void callReport(String act, String path) {
         int kelas = DataMurid.getSelectedIndex();
-        String kls="";
-        if(kelas==0){
-            kls="XII RPL1";
-        }else if(kelas==1){
-            kls="XII TKJ";
-        }else if(kelas==2){
-            kls="XII MM";
+        String kls = "";
+        if (kelas == 0) {
+            kls = "XII RPL";
+        } else if (kelas == 1) {
+            kls = "XII TKJ";
+        } else if (kelas == 2) {
+            kls = "XII MM";
         }
-        
-        try{
+
+        try {
             ClassLoader cl = getClass().getClassLoader();
             //if(kelas.equals(""))
             InputStream inReportFile = cl.getResourceAsStream("DataSiswa.jasper");
-            
+
             HashMap parameter = new HashMap();
             parameter.put("nama_kelas", kls);
-            
+
             JasperPrint jasperPrint = JasperFillManager.fillReport(inReportFile, parameter, koneksi);
-            if(act.equals("view")){
+            if (act.equals("view")) {
                 JasperViewer.viewReport(jasperPrint, false);
-            } else if(act.equals("save")){
+            } else if (act.equals("save")) {
                 JasperExportManager.exportReportToPdfFile(jasperPrint, path);
-            } else if(act.equals("print")){
+            } else if (act.equals("print")) {
                 JasperPrintManager.printPage(jasperPrint, 0, true);
             }
-        } catch (JRException ex){
+        } catch (JRException ex) {
             ex.printStackTrace();
         }
     }
 
     private void btnLaporanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLaporanActionPerformed
-       callReport("view", "");
+        callReport("view", "");
     }//GEN-LAST:event_btnLaporanActionPerformed
 
     private void btnPDFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPDFActionPerformed
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.addChoosableFileFilter(new FileNameExtensionFilter(".pdf", "pdf"));
-        
+
         fileChooser.setDialogTitle("Pilih Lokasi Penyimpanan");
-        
+
         int userSelection = fileChooser.showSaveDialog(this);
-        
-        if(userSelection == JFileChooser.APPROVE_OPTION){
+
+        if (userSelection == JFileChooser.APPROVE_OPTION) {
             File fileToSave = fileChooser.getSelectedFile();
             String file_name = fileToSave.getAbsolutePath();
-            
-            if(!file_name.endsWith(".pdf"))
+
+            if (!file_name.endsWith(".pdf")) {
                 fileToSave = new File(file_name + ".pdf");
-            
-            System.out.println("Save as file: "+fileToSave);       
+            }
+
+            System.out.println("Save as file: " + fileToSave);
             callReport("save", fileToSave.getAbsolutePath());
         }
     }//GEN-LAST:event_btnPDFActionPerformed
@@ -733,7 +721,6 @@ public class FormDataSiswaKeren extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;

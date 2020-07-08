@@ -58,7 +58,6 @@ public class FormAbsensi extends javax.swing.JDialog {
         absenPanel = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        lblTanggal = new javax.swing.JLabel();
         btnReset = new javax.swing.JButton();
         btnHelp = new javax.swing.JButton();
         cmbMinggu = new javax.swing.JComboBox();
@@ -205,7 +204,7 @@ public class FormAbsensi extends javax.swing.JDialog {
         jLabel3 = new javax.swing.JLabel();
         lblAlfa = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
+        lblTanggal = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         btnHadir = new javax.swing.JButton();
         btnGaHadir = new javax.swing.JButton();
@@ -225,9 +224,6 @@ public class FormAbsensi extends javax.swing.JDialog {
 
         jLabel1.setFont(new java.awt.Font("OCR A Extended", 0, 36)); // NOI18N
         jLabel1.setText("DATA ABSEN");
-
-        lblTanggal.setFont(new java.awt.Font("Tempus Sans ITC", 0, 24)); // NOI18N
-        lblTanggal.setText("09 Sep 2015");
 
         btnReset.setText("Reset Data Absen");
         btnReset.addActionListener(new java.awt.event.ActionListener() {
@@ -290,14 +286,14 @@ public class FormAbsensi extends javax.swing.JDialog {
         tabRPL1.setLayout(tabRPL1Layout);
         tabRPL1Layout.setHorizontalGroup(
             tabRPL1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 750, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 749, Short.MAX_VALUE)
         );
         tabRPL1Layout.setVerticalGroup(
             tabRPL1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 382, Short.MAX_VALUE)
         );
 
-        julTab.addTab("XII RPL1", tabRPL1);
+        julTab.addTab("XII RPL", tabRPL1);
 
         tbl_TKJ1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -326,7 +322,7 @@ public class FormAbsensi extends javax.swing.JDialog {
         tabTKJ1.setLayout(tabTKJ1Layout);
         tabTKJ1Layout.setHorizontalGroup(
             tabTKJ1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 750, Short.MAX_VALUE)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 749, Short.MAX_VALUE)
         );
         tabTKJ1Layout.setVerticalGroup(
             tabTKJ1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -362,7 +358,7 @@ public class FormAbsensi extends javax.swing.JDialog {
         tabMM1.setLayout(tabMM1Layout);
         tabMM1Layout.setHorizontalGroup(
             tabMM1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 750, Short.MAX_VALUE)
+            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 749, Short.MAX_VALUE)
         );
         tabMM1Layout.setVerticalGroup(
             tabMM1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1867,8 +1863,7 @@ public class FormAbsensi extends javax.swing.JDialog {
                 .addGap(0, 45, Short.MAX_VALUE))
         );
 
-        jLabel10.setFont(new java.awt.Font("Tahoma", 2, 14)); // NOI18N
-        jLabel10.setText("Mata Pelajaran Pemrograman Berbasis Objek");
+        lblTanggal.setText("jLabel10");
 
         javax.swing.GroupLayout absenPanelLayout = new javax.swing.GroupLayout(absenPanel);
         absenPanel.setLayout(absenPanelLayout);
@@ -1880,20 +1875,17 @@ public class FormAbsensi extends javax.swing.JDialog {
             .addGroup(absenPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(absenPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2))
+                .addGap(18, 18, 18)
+                .addGroup(absenPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(absenPanelLayout.createSequentialGroup()
-                        .addGroup(absenPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2))
-                        .addGap(18, 18, 18)
-                        .addGroup(absenPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(absenPanelLayout.createSequentialGroup()
-                                .addComponent(cmbMinggu, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnReset)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnHelp, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(lblTanggal)))
-                    .addComponent(jLabel10))
+                        .addComponent(cmbMinggu, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnReset)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnHelp, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblTanggal))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         absenPanelLayout.setVerticalGroup(
@@ -1906,16 +1898,14 @@ public class FormAbsensi extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel2))
                     .addGroup(absenPanelLayout.createSequentialGroup()
-                        .addGap(45, 45, 45)
+                        .addGap(51, 51, 51)
                         .addComponent(lblTanggal)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(18, 18, 18)
                         .addGroup(absenPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(cmbMinggu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnReset)
                             .addComponent(btnHelp))))
-                .addGap(7, 7, 7)
-                .addComponent(jLabel10)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(36, 36, 36)
                 .addComponent(backPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -2065,8 +2055,8 @@ public class FormAbsensi extends javax.swing.JDialog {
     }
     
     public void setRank(){
-        String kolom[] = {"No","Kelas","Hadir"};
-        String kls[]={"","XII RPL1", "XII TKJ", "XII MM"};
+        String kolom[] = {"No", "Kelas", "Hadir"};
+        String kls[]={"","XII RPL", "XII TKJ", "XII AV"};
         
         int hadir=0;
         dtm = new DefaultTableModel(null, kolom);
@@ -2133,7 +2123,7 @@ public class FormAbsensi extends javax.swing.JDialog {
             dtm = new DefaultTableModel(null, kolom);
             try {
                 stmt = koneksi.createStatement();
-                query = "SELECT m.nis, m.nm_siswa, a.m1, a.m2, a.m3, a.m4 FROM t_murid m, t_absen a WHERE m.nis = a.nis AND a.bulan = '"+bulan+"' AND m.kelas='XII RPL1'";
+                query = "SELECT m.nis, m.nm_siswa, a.m1, a.m2, a.m3, a.m4 FROM t_murid m, t_absen a WHERE m.nis = a.nis AND a.bulan = '"+bulan+"' AND m.kelas='XII RPL'";
                 rs = stmt.executeQuery(query);
                 int no = 1;
                 while (rs.next()) {
@@ -3835,7 +3825,6 @@ public class FormAbsensi extends javax.swing.JDialog {
     private javax.swing.JTabbedPane desTab;
     private javax.swing.JTabbedPane febTab;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
